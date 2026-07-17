@@ -1,0 +1,33 @@
+// Firebase 콘솔 → Firestore Database → 규칙 탭에 그대로 붙여넣으세요.
+// 방명록: 누구나 읽기/작성 가능, 수정·삭제 불가 (삭제는 콘솔에서만)
+// RSVP: 작성만 가능, 읽기 불가 (하객 개인정보 보호 — 집계는 콘솔에서)
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /guestbook/{doc} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasOnly(['name', 'message', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 20
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 500;
+      allow update, delete: if false;
+    }
+    match /rsvp/{doc} {
+      allow read: if false;
+      allow create: if request.resource.data.keys().hasOnly(['side', 'name', 'attending', 'count', 'meal', 'createdAt'])
+        && request.resource.data.side in ['groom', 'bride']
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 20
+        && request.resource.data.attending is bool
+        && request.resource.data.count is int
+        && request.resource.data.count >= 1
+        && request.resource.data.count <= 10
+        && request.resource.data.meal is bool;
+      allow update, delete: if false;
+    }
+  }
+}
