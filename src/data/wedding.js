@@ -48,8 +48,15 @@ export const WEDDING = {
   },
 
   // scripts/optimize-images.mjs 실행 후 출력된 목록을 붙여넣습니다.
-  gallery: [],
-  mainImage: '',   // 커버 사진 파일명 (예: 'photo-01.webp')
+  gallery: [
+    'photo-01.webp',
+    'photo-02.webp',
+    'photo-03.webp',
+    'photo-04.webp',
+    'photo-05.webp',
+    'photo-06.webp',
+  ],
+  mainImage: 'photo-01.webp',   // 커버 사진 파일명
 
   bgm: '',         // 'bgm.mp3' 를 넣으면 배경음악 활성화 (public/ 폴더에 파일 필요)
   videoUrl: '',    // 유튜브 링크를 넣으면 식전영상 섹션 활성화
