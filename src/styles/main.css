@@ -237,3 +237,27 @@ a { color: inherit; text-decoration: none; }
 .gb-more { width: 100%; margin-top: 4px; }
 
 [hidden] { display: none !important; }
+
+/* RSVP */
+.rsvp-note { text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.rsvp-form { display: flex; flex-direction: column; gap: 16px; }
+.rsvp-field { display: flex; flex-direction: column; gap: 8px; }
+.rsvp-label { font-size: 13px; color: var(--muted); }
+.rsvp-form input[type='text'], .rsvp-form select {
+  font-family: inherit; font-size: 15px; color: var(--ink);
+  background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+  appearance: none;
+}
+.rsvp-form input[type='text']:focus, .rsvp-form select:focus { outline: 1.5px solid var(--accent); }
+.rsvp-seg { display: flex; gap: 8px; }
+.rsvp-seg label { flex: 1; }
+.rsvp-seg input { position: absolute; opacity: 0; pointer-events: none; }
+.rsvp-seg span {
+  display: block; text-align: center; padding: 11px 0; font-size: 14px;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+}
+.rsvp-seg input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
+.rsvp-submit { margin-top: 8px; background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.rsvp-submit:disabled { opacity: 0.5; }
+.rsvp-thanks { text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 32px 20px; font-size: 15px; }
+.rsvp-thanks small { color: var(--muted); font-size: 13px; display: inline-block; margin-top: 8px; }
