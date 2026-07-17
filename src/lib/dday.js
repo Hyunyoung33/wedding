@@ -18,6 +18,30 @@ export function countdownParts(iso, now = new Date()) {
   return { days, hours, minutes, seconds: Math.floor(ms / 1000) };
 }
 
+// 처음 만난 날부터 지금까지 — '함께한 시간' 실시간 카운터용. 시작 전이면 전부 0.
+export function togetherParts(iso, now = new Date()) {
+  const start = new Date(iso);
+  if (now < start) return { years: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+  // 윤년을 정확히 다루기 위해 기념일(연 단위)을 실제 달력으로 전진시킨다
+  let years = now.getFullYear() - start.getFullYear();
+  const anniv = new Date(start);
+  anniv.setFullYear(start.getFullYear() + years);
+  if (anniv > now) {
+    years -= 1;
+    anniv.setFullYear(start.getFullYear() + years);
+  }
+
+  let ms = now - anniv;
+  const days = Math.floor(ms / DAY);
+  ms -= days * DAY;
+  const hours = Math.floor(ms / 3600000);
+  ms -= hours * 3600000;
+  const minutes = Math.floor(ms / 60000);
+  ms -= minutes * 60000;
+  return { years, days, hours, minutes, seconds: Math.floor(ms / 1000) };
+}
+
 // 예식 월의 달력 그리드. 앞뒤 빈칸은 0.
 export function calendarWeeks(iso) {
   const d = new Date(iso);

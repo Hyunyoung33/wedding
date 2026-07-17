@@ -8,10 +8,12 @@ const SECTIONS = [
   ['calendar', () => import('./sections/calendar.js')],
   ['gallery', () => import('./sections/gallery.js')],
   ['video', () => import('./sections/video.js')],
+  ['guestsnap', () => import('./sections/guestsnap.js')],
   ['location', () => import('./sections/location.js')],
   ['accounts', () => import('./sections/accounts.js')],
   ['guestbook', () => import('./sections/guestbook.js')],
   ['rsvp', () => import('./sections/rsvp.js')],
+  ['together', () => import('./sections/together.js')],
   ['share', () => import('./sections/share.js')],
 ];
 
@@ -28,6 +30,9 @@ for (const [id, load] of SECTIONS) {
       el.remove();
     });
 }
+
+// 접속 시 참석여부 안내 팝업
+import('./lib/rsvp-popup.js').then((m) => m.showRsvpPopup(WEDDING)).catch(() => {});
 
 // 배경음악 (설정에 bgm 파일이 있을 때만)
 if (WEDDING.bgm) {
