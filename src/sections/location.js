@@ -28,10 +28,11 @@ export function mount(el, w) {
   const { name, hall, address, tel, subway, bus, parking, lat, lng } = w.venue;
   const enc = encodeURIComponent(name);
 
+  const br = (s) => s.replaceAll('\n', '<br>');
   const infoLines = [
-    subway && `<div class="loc-info"><strong>지하철</strong><span>${subway}</span></div>`,
-    bus && `<div class="loc-info"><strong>버스</strong><span>${bus}</span></div>`,
-    parking && `<div class="loc-info"><strong>주차</strong><span>${parking}</span></div>`,
+    subway && `<div class="loc-info"><strong>지하철</strong><span>${br(subway)}</span></div>`,
+    bus && `<div class="loc-info"><strong>버스</strong><span>${br(bus)}</span></div>`,
+    parking && `<div class="loc-info"><strong>주차</strong><span>${br(parking)}</span></div>`,
   ]
     .filter(Boolean)
     .join('');
