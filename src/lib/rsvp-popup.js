@@ -5,6 +5,7 @@ const HIDE_KEY = 'rsvp-popup-hide-date';
 
 export function showRsvpPopup(w) {
   if (!w.rsvpPopup) return;
+  if (window.self !== window.top) return; // 비교/미리보기 iframe 안에서는 팝업 생략
   if (localStorage.getItem('rsvp-done')) return;
   const today = new Date().toDateString();
   if (localStorage.getItem(HIDE_KEY) === today) return;

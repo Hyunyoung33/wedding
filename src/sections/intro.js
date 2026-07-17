@@ -47,6 +47,9 @@ function mountFull(el, w) {
 }
 
 export function mount(el, w) {
-  if (w.coverStyle === 'full' && w.mainImage) mountFull(el, w);
+  // ?cover=full / ?cover=arch 로 미리보기 전환 가능 (비교용)
+  const override = new URLSearchParams(location.search).get('cover');
+  const style = override || w.coverStyle;
+  if (style === 'full' && w.mainImage) mountFull(el, w);
   else mountArch(el, w);
 }
