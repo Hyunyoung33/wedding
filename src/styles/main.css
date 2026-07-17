@@ -178,3 +178,24 @@ a { color: inherit; text-decoration: none; }
 .loc-infos { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
 .loc-info { display: flex; gap: 16px; padding: 6px 0; font-size: 14px; }
 .loc-info strong { font-weight: 600; color: var(--accent); width: 48px; flex: none; }
+
+/* 계좌번호 */
+.acc-note { text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.acc-group { background: #fff; border: 1px solid var(--line); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+.acc-group summary {
+  list-style: none; cursor: pointer; padding: 16px 20px;
+  font-size: 14px; font-weight: 600; color: var(--accent);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.acc-group summary::-webkit-details-marker { display: none; }
+.acc-group summary::after { content: '▾'; color: var(--muted); transition: transform 0.2s; }
+.acc-group[open] summary::after { transform: rotate(180deg); }
+.acc-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 14px 20px; border-top: 1px solid var(--line);
+}
+.acc-info { display: flex; flex-direction: column; }
+.acc-bank { font-size: 14px; }
+.acc-holder { font-size: 12px; color: var(--muted); }
+.acc-btns { display: flex; gap: 6px; flex: none; }
+.acc-pay { background: #fee500; border-color: #fee500; }
