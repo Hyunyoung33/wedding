@@ -1,9 +1,10 @@
 const DAY = 86400000;
-const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+const KST_OFFSET = 9 * 3600000; // 예식은 한국에서 열리므로 D-day는 KST 달력 기준 (KST는 서머타임 없음)
+const kstDayNumber = (d) => Math.floor((d.getTime() + KST_OFFSET) / DAY);
 
-// 예식일까지 남은 일수. 당일 0, 지났으면 음수.
+// 예식일까지 남은 일수. 당일 0, 지났으면 음수. 보는 사람의 시간대와 무관하게 KST 날짜로 비교.
 export function daysUntil(iso, now = new Date()) {
-  return Math.round((startOfDay(new Date(iso)) - startOfDay(now)) / DAY);
+  return kstDayNumber(new Date(iso)) - kstDayNumber(now);
 }
 
 // 실시간 카운트다운용. 지났으면 전부 0.
