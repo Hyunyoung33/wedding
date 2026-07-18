@@ -76,7 +76,14 @@ export const WEDDING = {
 
   keys: {
     kakaoJs: '',        // ⚠️ 카카오 개발자 JavaScript 키 (Task 5에서 발급)
-    firebase: null,     // ⚠️ Firebase 설정 객체 (Task 8에서 발급)
+    firebase: {
+      apiKey: 'AIzaSyB2hUt7XtRrNk7vNGbHkimehyGaIwBx4MQ',
+      authDomain: 'mobile-v01.firebaseapp.com',
+      projectId: 'mobile-v01',
+      storageBucket: 'mobile-v01.firebasestorage.app',
+      messagingSenderId: '314579470892',
+      appId: '1:314579470892:web:eab22dbb2b95b0e2125f89',
+    },
   },
 };
 
