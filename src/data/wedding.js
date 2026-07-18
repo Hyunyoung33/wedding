@@ -75,7 +75,7 @@ export const WEDDING = {
   },
 
   keys: {
-    kakaoJs: '',        // ⚠️ 카카오 개발자 JavaScript 키 (Task 5에서 발급)
+    kakaoJs: '361a272621b368f588af84ba79efd5af', // 카카오 개발자 JavaScript 키 (wedding 앱)
     firebase: {
       apiKey: 'AIzaSyB2hUt7XtRrNk7vNGbHkimehyGaIwBx4MQ',
       authDomain: 'mobile-v01.firebaseapp.com',
