@@ -40,10 +40,14 @@ export const WEDDING = {
 
   accounts: {
     groom: [
-      { bank: '○○은행', number: '000-0000-0000', holder: '두현민', kakaopay: '' }, // ⚠️ 교체 필요
+      { label: '신랑', bank: '○○은행', number: '000-0000-0000', holder: '두현민', kakaopay: '' },   // ⚠️ 교체 필요
+      { label: '아버지', bank: '○○은행', number: '000-0000-0000', holder: '두헌균', kakaopay: '' }, // ⚠️ 교체 필요
+      { label: '어머니', bank: '○○은행', number: '000-0000-0000', holder: '박외숙', kakaopay: '' }, // ⚠️ 교체 필요
     ],
     bride: [
-      { bank: '○○은행', number: '000-0000-0000', holder: '박현영', kakaopay: '' }, // ⚠️ 교체 필요
+      { label: '신부', bank: '○○은행', number: '000-0000-0000', holder: '박현영', kakaopay: '' },   // ⚠️ 교체 필요
+      { label: '아버지', bank: '○○은행', number: '000-0000-0000', holder: '박종근', kakaopay: '' }, // ⚠️ 교체 필요
+      { label: '어머니', bank: '○○은행', number: '000-0000-0000', holder: '김희숙', kakaopay: '' }, // ⚠️ 교체 필요
     ],
   },
 

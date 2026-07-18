@@ -5,6 +5,7 @@ function accountRow(acc) {
   return `
     <div class="acc-row">
       <div class="acc-info">
+        ${acc.label ? `<span class="acc-label">${acc.label}</span>` : ''}
         <span class="acc-bank">${acc.bank} ${acc.number}</span>
         <span class="acc-holder">${acc.holder}</span>
       </div>
