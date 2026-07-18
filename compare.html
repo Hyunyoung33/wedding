@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>커버 비교 — 풀스크린 vs 아치형</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Nanum+Myeongjo:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #2b2724 !important; padding: 16px; }
+    .cmp-wrap { display: flex; gap: 16px; justify-content: center; align-items: flex-start; }
+    .cmp-wrap figure { text-align: center; margin: 0; flex: 0 0 auto; }
+    .cmp-wrap figcaption { color: #e8e2db; font-size: 14px; margin-bottom: 8px; letter-spacing: 0.05em; font-family: sans-serif; }
+    .phone { width: 375px; height: 812px; overflow: hidden; border-radius: 20px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); background: #faf8f5; position: relative; }
+    /* 폰 프레임 안에서는 뷰포트 단위(dvh) 대신 고정 높이 사용 */
+    .phone .intro-full { min-height: 812px; }
+    .phone .if-top { top: 73px; }
+    .phone .if-bottom { bottom: 49px; }
+  </style>
+</head>
+<body>
+  <div class="cmp-wrap">
+    <figure>
+      <figcaption>A. 풀스크린 커버</figcaption>
+      <div class="phone" id="phone-full"></div>
+    </figure>
+    <figure>
+      <figcaption>B. 아치형 커버</figcaption>
+      <div class="phone" id="phone-arch"></div>
+    </figure>
+  </div>
+  <script type="module">
+    import './src/styles/main.css';
+    import { WEDDING } from './src/data/wedding.js';
+    import { mount } from './src/sections/intro.js';
+
+    for (const [id, style] of [['phone-full', 'full'], ['phone-arch', 'arch']]) {
+      const section = document.createElement('section');
+      document.getElementById(id).appendChild(section);
+      mount(section, { ...WEDDING, coverStyle: style });
+    }
+
+    // 화면이 좁거나 낮아도 두 폰이 항상 좌우로 나란히 보이도록 배율 자동 조정
+    function fit() {
+      const availW = (window.innerWidth - 16 * 2 - 16) / 2;
+      const availH = window.innerHeight - 16 * 2 - 30;
+      const scale = Math.min(1, availW / 375, availH / 812);
+      document.querySelectorAll('.phone').forEach((box) => {
+        box.style.zoom = scale;
+      });
+    }
+    fit();
+    addEventListener('resize', fit);
+  </script>
+</body>
+</html>
