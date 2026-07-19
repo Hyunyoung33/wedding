@@ -32,13 +32,14 @@ for (const [i, f] of files.entries()) {
   console.log(`${f} → ${name}`);
 }
 
-// 카카오톡/OG 공유 썸네일 (첫 사진에서 생성, 800×400)
-await sharp(path.join(SRC, files[0]))
+// 카카오톡/OG 공유 썸네일 (800×400). 인자로 파일명을 주면 그 사진, 없으면 첫 사진.
+const ogSrc = process.argv[2] && files.includes(process.argv[2]) ? process.argv[2] : files[0];
+await sharp(path.join(SRC, ogSrc))
   .rotate()
   .resize(800, 400, { fit: 'cover', position: 'attention' })
   .jpeg({ quality: 82 })
   .toFile(path.join(OUT, 'og.jpg'));
-console.log(`${files[0]} → og.jpg (공유 썸네일)`);
+console.log(`${ogSrc} → og.jpg (공유 썸네일)`);
 
 console.log('\nwedding.js 의 gallery 에 붙여넣을 목록:');
 console.log(JSON.stringify(names, null, 2));

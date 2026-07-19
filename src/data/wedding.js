@@ -59,8 +59,14 @@ export const WEDDING = {
     'photo-04.webp',
     'photo-05.webp',
     'photo-06.webp',
+    'photo-07.webp',
+    'photo-08.webp',
+    'photo-09.webp',
+    'photo-10.webp',
+    'photo-11.webp',
+    'photo-12.webp',
   ],
-  mainImage: 'photo-01.webp',   // 커버 사진 파일명
+  mainImage: 'photo-12.webp',   // 커버 사진 파일명 (청첩장 사진 폴더의 12번)
 
   bgm: '',         // 'bgm.mp3' 를 넣으면 배경음악 활성화 (public/ 폴더에 파일 필요)
   videoUrl: '',    // 유튜브 링크를 넣으면 식전영상 섹션 활성화
