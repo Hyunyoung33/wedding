@@ -25,34 +25,44 @@ function loadKakaoMap(el, w) {
 }
 
 export function mount(el, w) {
-  const { name, hall, address, tel, subway, bus, parking, lat, lng } = w.venue;
+  const { name, hall, address, tel, transit = [], lat, lng } = w.venue;
   const enc = encodeURIComponent(name);
 
-  const br = (s) => s.replaceAll('\n', '<br>');
-  const infoLines = [
-    subway && `<div class="loc-info"><strong>지하철</strong><span>${br(subway)}</span></div>`,
-    bus && `<div class="loc-info"><strong>버스</strong><span>${br(bus)}</span></div>`,
-    parking && `<div class="loc-info"><strong>주차</strong><span>${br(parking)}</span></div>`,
-  ]
-    .filter(Boolean)
-    .join('');
+  const transitBlocks = transit
+    .map(
+      (group) => `
+      <div class="loc-group">
+        <h4 class="loc-sub">${group.title}</h4>
+        <ul class="loc-list">
+          ${group.items
+            .map(
+              (it) =>
+                `<li>${it.dot ? `<span class="loc-dot" style="background:${it.dot}"></span>` : '<span class="loc-dot loc-dot-none"></span>'}${it.text}</li>`,
+            )
+            .join('')}
+        </ul>
+      </div>`,
+    )
+    .join('<hr class="loc-divider" />');
 
   el.innerHTML = `
     <p class="sec-label">Location</p>
     <h2 class="sec-title">오시는 길</h2>
-    <div class="loc-card">
-      <p class="loc-name">${name} ${hall}</p>
-      <p class="loc-addr">${address}</p>
-      ${tel ? `<p class="loc-tel"><a href="tel:${tel}">${tel}</a></p>` : ''}
-      <button class="btn" id="copy-addr">주소 복사</button>
-    </div>
+    <p class="loc-name">${name} ${hall}</p>
+    <p class="loc-addr">${address}</p>
+    ${tel ? `<p class="loc-tel">Tel. <a href="tel:${tel}">${tel}</a></p>` : ''}
     ${w.keys.kakaoJs ? '<div id="kakao-map" class="loc-map" aria-label="예식장 지도"></div>' : ''}
-    <div class="loc-btns">
-      <button class="btn" data-nav="kakaomap">카카오맵</button>
-      <button class="btn" data-nav="navermap">네이버지도</button>
-      <button class="btn" data-nav="tmap">티맵</button>
+    <button class="btn loc-copy" id="copy-addr">주소 복사하기</button>
+    <div class="loc-group">
+      <h4 class="loc-sub">내비게이션</h4>
+      <p class="loc-navdesc">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
+      <div class="loc-btns">
+        <button class="btn" data-nav="navermap"><span class="nav-ico" style="background:#03c75a">N</span>네이버지도</button>
+        <button class="btn" data-nav="tmap"><span class="nav-ico" style="background:#ed1b23">T</span>티맵</button>
+        <button class="btn" data-nav="kakaomap"><span class="nav-ico nav-ico-kakao" style="background:#fee500">K</span>카카오맵</button>
+      </div>
     </div>
-    ${infoLines ? `<div class="loc-infos">${infoLines}</div>` : ''}
+    ${transitBlocks ? `<hr class="loc-divider" />${transitBlocks}` : ''}
   `;
 
   el.querySelector('#copy-addr').addEventListener('click', async () => {

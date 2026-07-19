@@ -1,11 +1,17 @@
 import { daysUntil, countdownParts, calendarWeeks } from '../lib/dday.js';
-import { formatDateKo } from '../data/wedding.js';
 
 const DAYS_HEADER = ['일', '월', '화', '수', '목', '금', '토'];
+const DAYS_KO = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
 export function mount(el, w) {
   const wd = new Date(w.datetime);
   const weeks = calendarWeeks(w.datetime);
+  const holidays = w.holidays ?? [];
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const h = wd.getHours();
+  const ampm = h < 12 ? '오전' : h < 18 ? '낮' : '저녁';
+  const timeLine = `${DAYS_KO[wd.getDay()]} ${ampm} ${h % 12 || 12}시 ${wd.getMinutes()}분`;
 
   const grid = weeks
     .map(
@@ -14,7 +20,8 @@ export function mount(el, w) {
           .map((d, i) => {
             if (!d) return '<td></td>';
             const isDay = d === wd.getDate();
-            const cls = [isDay ? 'wday' : '', i === 0 ? 'sun' : ''].join(' ').trim();
+            const rosy = i === 0 || holidays.includes(d);
+            const cls = [isDay ? 'wday' : '', rosy ? 'sun' : ''].join(' ').trim();
             return `<td class="${cls}"><span>${d}</span></td>`;
           })
           .join('')}</tr>`,
@@ -22,17 +29,19 @@ export function mount(el, w) {
     .join('');
 
   el.innerHTML = `
-    <p class="sec-label">Save the Date</p>
-    <h2 class="sec-title">${formatDateKo(w.datetime)}</h2>
-    <table class="cal" aria-label="예식 달력">
-      <thead><tr>${DAYS_HEADER.map((d, i) => `<th class="${i === 0 ? 'sun' : ''}">${d}</th>`).join('')}</tr></thead>
-      <tbody>${grid}</tbody>
-    </table>
+    <p class="cal-date">${wd.getFullYear()}.${pad(wd.getMonth() + 1)}.${pad(wd.getDate())}</p>
+    <p class="cal-time">${timeLine}</p>
+    <div class="cal-wrap">
+      <table class="cal" aria-label="예식 달력">
+        <thead><tr>${DAYS_HEADER.map((d, i) => `<th class="${i === 0 ? 'sun' : ''}">${d}</th>`).join('')}</tr></thead>
+        <tbody>${grid}</tbody>
+      </table>
+    </div>
     <div class="countdown" aria-live="off">
-      ${['days', 'hours', 'minutes', 'seconds']
+      ${['DAYS', 'HOUR', 'MIN', 'SEC']
         .map(
-          (k, i) =>
-            `<div class="cd-cell"><strong data-cd="${k}">0</strong><small>${['일', '시간', '분', '초'][i]}</small></div>`,
+          (label, i) =>
+            `${i > 0 ? '<span class="cd-colon">:</span>' : ''}<div class="cd-cell"><small>${label}</small><strong data-cd="${['days', 'hours', 'minutes', 'seconds'][i]}">0</strong></div>`,
         )
         .join('')}
     </div>
@@ -49,14 +58,14 @@ export function mount(el, w) {
 
   function tick() {
     const parts = countdownParts(w.datetime);
-    for (const k in cells) cells[k].textContent = parts[k];
+    for (const k in cells) cells[k].textContent = String(parts[k]).padStart(2, '0');
     const d = daysUntil(w.datetime);
-    msg.textContent =
+    msg.innerHTML =
       d > 0
-        ? `${groomFirst} ♥ ${brideFirst}의 결혼식이 ${d}일 남았습니다`
+        ? `${groomFirst}, ${brideFirst}의 결혼식이 <em>${d}</em>일 남았습니다.`
         : d === 0
-          ? `${groomFirst} ♥ ${brideFirst}, 오늘 결혼합니다 🎉`
-          : `${groomFirst} ♥ ${brideFirst}, 결혼식이 ${-d}일 지났습니다`;
+          ? `${groomFirst}, ${brideFirst} 오늘 결혼합니다 🎉`
+          : `${groomFirst}, ${brideFirst}의 결혼식이 ${-d}일 지났습니다.`;
   }
   tick();
   setInterval(tick, 1000);
