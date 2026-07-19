@@ -66,9 +66,9 @@ export const WEDDING = {
 
   accounts: {
     groom: [
-      { label: '신랑', bank: '○○은행', number: '000-0000-0000', holder: '두현민', kakaopay: '' },   // ⚠️ 교체 필요
-      { label: '아버지', bank: '○○은행', number: '000-0000-0000', holder: '두헌균', kakaopay: '' }, // ⚠️ 교체 필요
-      { label: '어머니', bank: '○○은행', number: '000-0000-0000', holder: '박외숙', kakaopay: '' }, // ⚠️ 교체 필요
+      { label: '신랑', bank: '카카오뱅크', number: '3333-25-1696081', holder: '두현민', kakaopay: '' },
+      { label: '아버지', bank: '신한은행', number: '110-435-304430', holder: '두헌균', kakaopay: '' },
+      { label: '어머니', bank: 'NH농협은행', number: '302-2339-7781-91', holder: '박외숙', kakaopay: '' },
     ],
     bride: [
       { label: '신부', bank: '○○은행', number: '000-0000-0000', holder: '박현영', kakaopay: '' },   // ⚠️ 교체 필요
