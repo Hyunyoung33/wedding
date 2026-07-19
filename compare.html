@@ -46,17 +46,29 @@
       mount(section, { ...WEDDING, coverStyle: style });
     }
 
-    // 화면이 좁거나 낮아도 두 폰이 항상 좌우로 나란히 보이도록 배율 자동 조정
+    // 넓은 화면: 3개 좌우 나란히 (배율 자동 조정) / 좁은 화면(폰): 세로로 하나씩 크게
     function fit() {
-      const availW = (window.innerWidth - 16 * 2 - 16 * 2) / 3;
-      const availH = window.innerHeight - 16 * 2 - 30;
-      const scale = Math.min(1, availW / 375, availH / 812);
+      const wrap = document.querySelector('.cmp-wrap');
+      const narrow = window.innerWidth < 720;
+      wrap.style.flexDirection = narrow ? 'column' : 'row';
+      wrap.style.alignItems = narrow ? 'center' : 'flex-start';
+      let scale;
+      if (narrow) {
+        scale = Math.min(1, (window.innerWidth - 32) / 375);
+      } else {
+        const availW = (window.innerWidth - 16 * 2 - 16 * 2) / 3;
+        const availH = window.innerHeight - 16 * 2 - 30;
+        scale = Math.min(1, availW / 375, availH / 812);
+      }
       document.querySelectorAll('.phone').forEach((box) => {
         box.style.zoom = scale;
       });
     }
     fit();
+    setTimeout(fit, 300);
+    setTimeout(fit, 1000);
     addEventListener('resize', fit);
+    addEventListener('pageshow', fit);
   </script>
 </body>
 </html>
