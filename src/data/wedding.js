@@ -4,14 +4,14 @@
 export const WEDDING = {
   groom: {
     name: '두현민',
-    phone: '010-0000-0000',                          // ⚠️ 교체 필요
+    phone: '010-3308-7781',
     father: { name: '두헌균', phone: '' },
     mother: { name: '박외숙', phone: '' },
     order: '장남',
   },
   bride: {
     name: '박현영',
-    phone: '010-0000-0000',                          // ⚠️ 교체 필요
+    phone: '010-6233-5494',
     father: { name: '박종근', phone: '' },
     mother: { name: '김희숙', phone: '' },
     order: '차녀',
