@@ -71,7 +71,6 @@ export const WEDDING = {
   guestSnap: {
     url: 'https://photos.app.goo.gl/hH9GnXTYp2yD4T2z7', // 구글 포토 공유 앨범 (게스트스냅)
     photo: 'photo-04.webp', // 섹션 대표 사진 (갤러리 파일명, 비우면 사진 생략)
-    reward: '가장 멋진 컷을 남겨주신 분께\n맛있는 밥 한 끼를 쏩니다!', // 이벤트 문구 (비우면 숨김)
   },
 
   share: {

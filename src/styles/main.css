@@ -281,16 +281,10 @@ a { color: inherit; text-decoration: none; }
 
 /* 게스트스냅 */
 .snap-sub { text-align: center; font-size: 14px; color: var(--muted); margin: -16px 0 22px; }
-.snap-photo { margin: 0 0 20px; }
-.snap-photo img { width: 100%; border-radius: 14px; display: block; }
-.snap-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px 20px; text-align: center; }
-.snap-open { font-size: 14.5px; line-height: 1.8; }
-.snap-divider { border: 0; border-top: 1px dashed var(--line); margin: 18px 0; }
-.snap-headline { font-size: 14.5px; font-weight: 600; margin-bottom: 18px; }
-.snap-list-title { font-size: 13.5px; color: var(--muted); margin-bottom: 8px; }
-.snap-line { font-size: 13.5px; color: var(--muted); padding: 2px 0; }
-.snap-reward { font-size: 13.5px; color: var(--accent); line-height: 1.8; margin: 16px 0; }
-.snap-note { font-size: 13.5px; line-height: 1.8; margin: 16px 0 18px; }
+.snap-photo { margin: 0 0 16px; }
+.snap-photo img { width: 100%; height: 180px; object-fit: cover; border-radius: 14px; display: block; }
+.snap-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; text-align: center; }
+.snap-note { font-size: 14px; line-height: 1.8; margin-bottom: 16px; }
 .snap-btn { width: 100%; background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
 .snap-btn[disabled] { opacity: 0.55; cursor: default; }
 a.snap-btn { display: block; text-decoration: none; text-align: center; }
