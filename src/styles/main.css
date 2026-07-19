@@ -309,8 +309,8 @@ a.snap-btn { display: block; text-decoration: none; text-align: center; }
 .wv-label { font-size: 15px; letter-spacing: 0.3em; text-indent: 0.3em; }
 .wv-names { font-size: 29px; letter-spacing: 0.1em; margin-top: 3.6dvh; font-family: var(--serif-strong); font-weight: 400; }
 .wv-amp { font-family: 'Great Vibes', cursive; font-size: 30px; font-weight: 400; margin: 0 18px; vertical-align: -3px; }
-.wv-date { font-size: 16.5px; letter-spacing: 0.16em; margin-top: 3.4dvh; }
-.wv-venue { font-size: 13.5px; letter-spacing: 0.06em; margin-top: 1.6dvh; opacity: 0.95; }
+.wv-venue { font-size: 14px; letter-spacing: 0.06em; margin-top: 3.4dvh; opacity: 0.95; }
+.wv-date { font-size: 16.5px; letter-spacing: 0.16em; margin-top: 1.4dvh; }
 .wv { display: inline-block; opacity: 0; animation: wv-in 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) var(--d) forwards; text-shadow: 0 1px 14px rgba(0,0,0,0.35); }
 .wv-sp { display: inline-block; width: 0.4em; }
 @keyframes wv-in {

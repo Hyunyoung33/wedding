@@ -86,8 +86,8 @@ function mountWave(el, w) {
     <div class="wv-top">
       <p class="wv-label">${waveText('THE WEDDING OF', 0.3)}</p>
       <p class="wv-names">${waveText(w.groom.name, 1.0)}<span class="wv wv-amp" style="--d:1.35s;--dx:0px;--dy:26px">&amp;</span>${waveText(w.bride.name, 1.5)}</p>
-      <p class="wv-date">${waveText(dateLine, 2.0)}</p>
-      <p class="wv-venue">${waveText(`${w.venue.name} ${w.venue.hall}`, 2.6)}</p>
+      <p class="wv-venue">${waveText(`${w.venue.name} ${w.venue.hall}`, 2.0)}</p>
+      <p class="wv-date">${waveText(dateLine, 2.6)}</p>
     </div>
   `;
 }
