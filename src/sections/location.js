@@ -70,16 +70,31 @@ export function mount(el, w) {
   });
 
   const webMap = `https://map.kakao.com/link/map/${enc},${lat},${lng}`;
+  const isAndroid = /android/i.test(navigator.userAgent);
+  // 티맵은 웹 지도가 없어서, 앱이 없으면 설치 페이지로 안내
+  const tmapStore = isAndroid
+    ? 'https://play.google.com/store/apps/details?id=com.skt.tmap.ku'
+    : 'https://apps.apple.com/kr/app/id431589174';
+  const tmapQuery = `goalname=${enc}&goaly=${lat}&goalx=${lng}`;
+
   const NAV = {
-    kakaomap: [`kakaomap://look?p=${lat},${lng}`, webMap],
-    navermap: [
-      `nmap://place?lat=${lat}&lng=${lng}&name=${enc}&appname=wedding.invitation`,
-      `https://map.naver.com/p/search/${enc}`,
-    ],
-    tmap: [`tmap://route?goalname=${enc}&goaly=${lat}&goalx=${lng}`, webMap],
+    kakaomap: () => openApp(`kakaomap://look?p=${lat},${lng}`, webMap),
+    navermap: () =>
+      openApp(
+        `nmap://place?lat=${lat}&lng=${lng}&name=${enc}&appname=wedding.invitation`,
+        `https://map.naver.com/p/search/${enc}`,
+      ),
+    tmap: () => {
+      if (isAndroid) {
+        // 안드로이드는 intent 방식이 확실함 — 앱이 있으면 티맵 실행, 없으면 스토어로
+        location.href = `intent://route?${tmapQuery}#Intent;scheme=tmap;package=com.skt.tmap.ku;S.browser_fallback_url=${encodeURIComponent(tmapStore)};end`;
+      } else {
+        openApp(`tmap://route?${tmapQuery}`, tmapStore);
+      }
+    },
   };
   el.querySelectorAll('[data-nav]').forEach((b) =>
-    b.addEventListener('click', () => openApp(...NAV[b.dataset.nav])),
+    b.addEventListener('click', () => NAV[b.dataset.nav]()),
   );
 
   if (w.keys.kakaoJs) loadKakaoMap(el.querySelector('#kakao-map'), w);
