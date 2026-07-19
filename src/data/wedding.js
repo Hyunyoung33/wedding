@@ -94,7 +94,7 @@ export const WEDDING = {
   ],
   mainImage: 'photo-12.webp',   // 커버 사진 파일명 (청첩장 사진 폴더의 12번)
 
-  bgm: '',         // 'bgm.mp3' 를 넣으면 배경음악 활성화 (public/ 폴더에 파일 필요)
+  bgm: 'bgm.mp3',  // 배경음악: Romantic Wedding Piano (PaulYudin, Pixabay 무료 라이선스)
   videoUrl: '',    // 유튜브 링크를 넣으면 식전영상 섹션 활성화
 
   coverStyle: 'wave',   // 커버 스타일: 'wave'(웨이브 텍스트+빛망울) / 'arch'(아치형) / 'full'(풀스크린)

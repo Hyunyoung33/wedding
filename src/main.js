@@ -38,6 +38,8 @@ import('./lib/rsvp-popup.js').then((m) => m.showRsvpPopup(WEDDING)).catch(() => 
 if (WEDDING.bgm) {
   const audio = new Audio(import.meta.env.BASE_URL + WEDDING.bgm);
   audio.loop = true;
+  audio.preload = 'none'; // 사진 로딩을 방해하지 않게, 첫 터치 때부터 받기 시작
+  audio.volume = 0.55;
 
   const btn = document.createElement('button');
   btn.id = 'bgm-toggle';
