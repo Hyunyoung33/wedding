@@ -102,7 +102,6 @@ export const WEDDING = {
   rsvpPopup: true,      // 접속 시 참석여부 안내 팝업 표시 여부
   guestSnap: {
     url: 'https://photos.app.goo.gl/hH9GnXTYp2yD4T2z7', // 구글 포토 공유 앨범 (축하 사진 공유)
-    photos: ['photo-04.webp', 'photo-07.webp', 'photo-12.webp'], // 폴라로이드 스택 3장 (갤러리 파일명)
   },
 
   share: {
