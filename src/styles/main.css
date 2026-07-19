@@ -6,8 +6,8 @@
   --accent-soft: #f0e4dc;
   --muted: #9b948d;
   --line: #e8e2db;
-  --serif: 'MaruBuriLight', 'Gowun Batang', serif;         /* 본문 (가는 굵기) */
-  --serif-strong: 'MaruBuri', 'Gowun Batang', serif;        /* 제목·이름·강조 */
+  --serif: 'Gowun Batang', 'MaruBuriLight', serif;          /* 본문 */
+  --serif-strong: 'Gowun Batang', 'MaruBuri', serif;        /* 제목·이름·강조 */
   --maxw: 430px;
 }
 
