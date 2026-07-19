@@ -71,7 +71,7 @@ export const WEDDING = {
   bgm: '',         // 'bgm.mp3' 를 넣으면 배경음악 활성화 (public/ 폴더에 파일 필요)
   videoUrl: '',    // 유튜브 링크를 넣으면 식전영상 섹션 활성화
 
-  coverStyle: 'arch',   // 커버 스타일: 'arch'(아치형) 또는 'full'(풀스크린 사진)
+  coverStyle: 'wave',   // 커버 스타일: 'wave'(웨이브 텍스트+빛망울) / 'arch'(아치형) / 'full'(풀스크린)
   firstMet: '',         // 처음 만난 날 (예: '2020-05-10') — 넣으면 '함께한 시간' 실시간 카운터 표시  ⚠️ 날짜 필요
   rsvpPopup: true,      // 접속 시 참석여부 안내 팝업 표시 여부
   guestSnap: {

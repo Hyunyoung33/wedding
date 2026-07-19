@@ -299,3 +299,27 @@ a.snap-btn { display: block; text-decoration: none; text-align: center; }
 .rp-close { position: absolute; top: 10px; right: 14px; font-size: 26px; color: var(--muted); padding: 4px; }
 .rp-go { width: 100%; background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
 .rp-hide { display: block; margin: 12px auto 0; font-size: 13px; color: var(--muted); text-decoration: underline; }
+
+/* 웨이브 커버 */
+.intro-wave { position: relative; max-width: none; padding: 0; min-height: 100dvh; overflow: hidden; }
+.wv-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(22,20,17,0.42) 0%, rgba(22,20,17,0.18) 45%, rgba(22,20,17,0.12) 100%); }
+.wv-top { position: absolute; top: 7dvh; left: 0; width: 100%; text-align: center; color: #f7f3ec; z-index: 2; padding: 0 16px; }
+.wv-label { font-size: 15px; letter-spacing: 0.3em; text-indent: 0.3em; }
+.wv-names { font-size: 29px; letter-spacing: 0.1em; margin-top: 3.6dvh; font-weight: 600; }
+.wv-amp { font-family: 'Great Vibes', cursive; font-size: 30px; font-weight: 400; margin: 0 18px; vertical-align: -3px; }
+.wv-date { font-size: 16.5px; letter-spacing: 0.16em; margin-top: 3.4dvh; }
+.wv-venue { font-size: 13.5px; letter-spacing: 0.06em; margin-top: 1.6dvh; opacity: 0.95; }
+.wv { display: inline-block; opacity: 0; animation: wv-in 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) var(--d) forwards; text-shadow: 0 1px 14px rgba(0,0,0,0.35); }
+.wv-sp { display: inline-block; width: 0.4em; }
+@keyframes wv-in {
+  0% { opacity: 0; transform: translate(var(--dx), var(--dy)); filter: blur(4px); }
+  100% { opacity: 1; transform: translate(0, 0); filter: blur(0); }
+}
+.wv-particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.wv-particle { position: absolute; border-radius: 50%; background: #fff; filter: blur(1px); opacity: 0; animation: wv-float linear infinite; }
+@keyframes wv-float {
+  0% { transform: translate(0, 0); opacity: 0; }
+  12% { opacity: var(--op); }
+  60% { opacity: calc(var(--op) * 0.7); }
+  100% { transform: translate(4vw, -18dvh); opacity: 0; }
+}

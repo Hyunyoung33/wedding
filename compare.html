@@ -14,19 +14,24 @@
     .cmp-wrap figcaption { color: #e8e2db; font-size: 14px; margin-bottom: 8px; letter-spacing: 0.05em; font-family: sans-serif; }
     .phone { width: 375px; height: 812px; overflow: hidden; border-radius: 20px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); background: #faf8f5; position: relative; }
     /* 폰 프레임 안에서는 뷰포트 단위(dvh) 대신 고정 높이 사용 */
-    .phone .intro-full { min-height: 812px; }
+    .phone .intro-full, .phone .intro-wave { min-height: 812px; }
     .phone .if-top { top: 73px; }
+    .phone .wv-top { top: 57px; }
     .phone .if-bottom { bottom: 49px; }
   </style>
 </head>
 <body>
   <div class="cmp-wrap">
     <figure>
-      <figcaption>A. 풀스크린 커버</figcaption>
+      <figcaption>A. 웨이브 커버</figcaption>
+      <div class="phone" id="phone-wave"></div>
+    </figure>
+    <figure>
+      <figcaption>B. 풀스크린 커버</figcaption>
       <div class="phone" id="phone-full"></div>
     </figure>
     <figure>
-      <figcaption>B. 아치형 커버</figcaption>
+      <figcaption>C. 아치형 커버</figcaption>
       <div class="phone" id="phone-arch"></div>
     </figure>
   </div>
@@ -35,7 +40,7 @@
     import { WEDDING } from './src/data/wedding.js';
     import { mount } from './src/sections/intro.js';
 
-    for (const [id, style] of [['phone-full', 'full'], ['phone-arch', 'arch']]) {
+    for (const [id, style] of [['phone-wave', 'wave'], ['phone-full', 'full'], ['phone-arch', 'arch']]) {
       const section = document.createElement('section');
       document.getElementById(id).appendChild(section);
       mount(section, { ...WEDDING, coverStyle: style });
@@ -43,7 +48,7 @@
 
     // 화면이 좁거나 낮아도 두 폰이 항상 좌우로 나란히 보이도록 배율 자동 조정
     function fit() {
-      const availW = (window.innerWidth - 16 * 2 - 16) / 2;
+      const availW = (window.innerWidth - 16 * 2 - 16 * 2) / 3;
       const availH = window.innerHeight - 16 * 2 - 30;
       const scale = Math.min(1, availW / 375, availH / 812);
       document.querySelectorAll('.phone').forEach((box) => {
