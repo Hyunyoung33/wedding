@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>폰트 비교 — 청첩장 서체 시안</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    body { background: #2b2724; padding: 20px 16px; font-family: sans-serif; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; max-width: 1400px; margin: 0 auto; }
+    .card { background: #faf8f5; border-radius: 16px; padding: 30px 22px; color: #3d3a37; text-align: center; }
+    .tag { display: inline-block; font-size: 12px; letter-spacing: 0.06em; background: #2b2724; color: #e8e2db; border-radius: 12px; padding: 3px 12px; margin-bottom: 20px; }
+    .tag.pick { background: #b98a6f; }
+    .names { font-size: 25px; margin-bottom: 14px; }
+    .date { font-size: 15px; margin-bottom: 4px; }
+    .venue { font-size: 13.5px; color: #9b948d; margin-bottom: 20px; }
+    .msg { font-size: 14.5px; line-height: 1.9; border-top: 1px solid #e8e2db; padding-top: 18px; }
+    .f-maru  { font-family: 'MaruBuriLight', serif; }
+    .f-maru .names { font-family: 'MaruBuri', serif; }
+    .f-gowun { font-family: 'Gowun Batang', serif; }
+    .f-nanum { font-family: 'Nanum Myeongjo', serif; }
+    .f-noto  { font-family: 'Noto Serif KR', serif; font-weight: 300; }
+    .f-noto .names { font-weight: 400; }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="card f-maru">
+      <span class="tag pick">① 마루부리 — 현재 적용 (추천)</span>
+      <p class="names">두현민 · 박현영</p>
+      <p class="date">2026년 10월 31일 토요일 낮 12시 20분</p>
+      <p class="venue">신도림 테크노마트 웨딩시티 11층 그랜드볼룸홀</p>
+      <p class="msg">함께 있는 것만으로도 마음이 편안해지고,<br>있는 그대로의 나조차 사랑하게 만들어준<br>사람을 만났습니다</p>
+    </div>
+    <div class="card f-gowun">
+      <span class="tag">② 고운바탕</span>
+      <p class="names">두현민 · 박현영</p>
+      <p class="date">2026년 10월 31일 토요일 낮 12시 20분</p>
+      <p class="venue">신도림 테크노마트 웨딩시티 11층 그랜드볼룸홀</p>
+      <p class="msg">함께 있는 것만으로도 마음이 편안해지고,<br>있는 그대로의 나조차 사랑하게 만들어준<br>사람을 만났습니다</p>
+    </div>
+    <div class="card f-nanum">
+      <span class="tag">③ 나눔명조</span>
+      <p class="names">두현민 · 박현영</p>
+      <p class="date">2026년 10월 31일 토요일 낮 12시 20분</p>
+      <p class="venue">신도림 테크노마트 웨딩시티 11층 그랜드볼룸홀</p>
+      <p class="msg">함께 있는 것만으로도 마음이 편안해지고,<br>있는 그대로의 나조차 사랑하게 만들어준<br>사람을 만났습니다</p>
+    </div>
+    <div class="card f-noto">
+      <span class="tag">④ 노토 세리프 — 기존</span>
+      <p class="names">두현민 · 박현영</p>
+      <p class="date">2026년 10월 31일 토요일 낮 12시 20분</p>
+      <p class="venue">신도림 테크노마트 웨딩시티 11층 그랜드볼룸홀</p>
+      <p class="msg">함께 있는 것만으로도 마음이 편안해지고,<br>있는 그대로의 나조차 사랑하게 만들어준<br>사람을 만났습니다</p>
+    </div>
+  </div>
+</body>
+</html>

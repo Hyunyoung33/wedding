@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: { main: 'index.html', compare: 'compare.html' },
+      input: { main: 'index.html', compare: 'compare.html', fonts: 'fonts.html' },
     },
   },
   test: { environment: 'node' },
