@@ -72,9 +72,8 @@ export const WEDDING = {
     ],
     bride: [
       { label: '신부', bank: '국민은행', number: '763602-04-138790', holder: '박현영', kakaopay: '' },
-      // 신부측 부모님 계좌를 받으면 아래 형식으로 추가:
-      // { label: '아버지', bank: '', number: '', holder: '박종근', kakaopay: '' },
-      // { label: '어머니', bank: '', number: '', holder: '김희숙', kakaopay: '' },
+      { label: '아버지', bank: 'NH농협은행', number: '457-12-258963', holder: '박종근', kakaopay: '' },
+      { label: '어머니', bank: 'NH농협은행', number: '457-12-188433', holder: '김희숙', kakaopay: '' },
     ],
   },
 
