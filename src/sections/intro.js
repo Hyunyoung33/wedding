@@ -1,4 +1,4 @@
-import { formatDateKo } from '../data/wedding.js';
+import { formatDateKo, kstParts } from '../data/wedding.js';
 
 const BASE = import.meta.env.BASE_URL;
 const DAYS_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -75,9 +75,10 @@ function particles(n) {
 // 웨이브 커버 (풀스크린 사진 + 상단 텍스트 웨이브 등장 + 빛망울)
 function mountWave(el, w) {
   el.classList.add('intro-wave');
-  const d = new Date(w.datetime);
-  const h12 = d.getHours() % 12 || 12;
-  const dateLine = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')} ${DAYS_EN[d.getDay()].toUpperCase()} ${h12}:${String(d.getMinutes()).padStart(2, '0')}${d.getHours() < 12 ? 'AM' : 'PM'}`;
+  const k = kstParts(w.datetime);
+  const pad = (n) => String(n).padStart(2, '0');
+  const h12 = k.hours % 12 || 12;
+  const dateLine = `${k.year}.${pad(k.month + 1)}.${pad(k.date)} ${DAYS_EN[k.day].toUpperCase()} ${h12}:${pad(k.minutes)}${k.hours < 12 ? 'AM' : 'PM'}`;
 
   el.innerHTML = `
     <img class="if-photo" src="${BASE}images/${w.mainImage}" alt="${w.groom.name}과 ${w.bride.name}의 웨딩 사진" />

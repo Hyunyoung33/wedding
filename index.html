@@ -2,16 +2,22 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
+  <!-- 기존 QR(github.io 주소)로 들어오면 깔끔한 vercel 주소로 자동 이동. vercel에서는 실행 안 됨. -->
+  <script>
+    if (location.hostname.endsWith('github.io')) {
+      location.replace('https://hyunmin-hyunyoung-wedding.vercel.app' + location.search + location.hash);
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>두현민 ♥ 박현영 결혼합니다</title>
   <!-- 카카오톡/문자 공유 미리보기 카드. og:image/og:url 의 도메인은 배포 시(Task 11) 실제 GitHub 계정으로 교체 -->
   <meta property="og:title" content="두현민 ♥ 박현영, 결혼합니다" />
   <meta property="og:description" content="저희 두 사람의 결혼식에 소중한 분들을 초대합니다." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://hyunyoung33.github.io/wedding/images/og-v2.jpg" />
+  <meta property="og:image" content="https://hyunmin-hyunyoung-wedding.vercel.app/images/og-v2.jpg" />
   <meta property="og:image:width" content="800" />
   <meta property="og:image:height" content="400" />
-  <meta property="og:url" content="https://hyunyoung33.github.io/wedding/" />
+  <meta property="og:url" content="https://hyunmin-hyunyoung-wedding.vercel.app/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css" />

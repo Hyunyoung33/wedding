@@ -126,17 +126,29 @@ export const WEDDING = {
 // 날짜 표시용 헬퍼 — 설정에서 파생되는 값들
 const DAYS_KO = ['일', '월', '화', '수', '목', '금', '토'];
 
+// 예식 일시를 항상 한국시간(KST) 기준 구성요소로 반환.
+// 보는 사람의 기기 시간대와 무관하게 늘 같은 값이 나오도록 UTC+9로 고정한다.
+export function kstParts(iso = WEDDING.datetime) {
+  const k = new Date(new Date(iso).getTime() + 9 * 3600000);
+  return {
+    year: k.getUTCFullYear(),
+    month: k.getUTCMonth(), // 0-based
+    date: k.getUTCDate(),
+    day: k.getUTCDay(),
+    hours: k.getUTCHours(),
+    minutes: k.getUTCMinutes(),
+  };
+}
+
 export function formatDateKo(iso = WEDDING.datetime) {
-  const d = new Date(iso);
-  const h = d.getHours();
-  const ampm = h < 12 ? '오전' : h < 18 ? '낮' : '저녁';
-  const h12 = h % 12 === 0 ? 12 : h % 12;
-  const min = d.getMinutes();
-  return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 ${DAYS_KO[d.getDay()]}요일 ${ampm} ${h12}시${min ? ` ${min}분` : ''}`;
+  const { year, month, date, day, hours, minutes } = kstParts(iso);
+  const ampm = hours < 12 ? '오전' : hours < 18 ? '낮' : '저녁';
+  const h12 = hours % 12 === 0 ? 12 : hours % 12;
+  return `${year}년 ${month + 1}월 ${date}일 ${DAYS_KO[day]}요일 ${ampm} ${h12}시${minutes ? ` ${minutes}분` : ''}`;
 }
 
 export function formatDateShort(iso = WEDDING.datetime) {
-  const d = new Date(iso);
+  const { year, month, date } = kstParts(iso);
   const pad = (n) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}. ${pad(d.getMonth() + 1)}. ${pad(d.getDate())}`;
+  return `${year}. ${pad(month + 1)}. ${pad(date)}`;
 }

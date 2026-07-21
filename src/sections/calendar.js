@@ -1,17 +1,17 @@
 import { daysUntil, countdownParts, calendarWeeks } from '../lib/dday.js';
+import { kstParts } from '../data/wedding.js';
 
 const DAYS_HEADER = ['일', '월', '화', '수', '목', '금', '토'];
 const DAYS_KO = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
 export function mount(el, w) {
-  const wd = new Date(w.datetime);
+  const k = kstParts(w.datetime);
   const weeks = calendarWeeks(w.datetime);
   const holidays = w.holidays ?? [];
   const pad = (n) => String(n).padStart(2, '0');
 
-  const h = wd.getHours();
-  const ampm = h < 12 ? '오전' : h < 18 ? '낮' : '저녁';
-  const timeLine = `${DAYS_KO[wd.getDay()]} ${ampm} ${h % 12 || 12}시 ${wd.getMinutes()}분`;
+  const ampm = k.hours < 12 ? '오전' : k.hours < 18 ? '낮' : '저녁';
+  const timeLine = `${DAYS_KO[k.day]} ${ampm} ${k.hours % 12 || 12}시 ${k.minutes}분`;
 
   const grid = weeks
     .map(
@@ -19,7 +19,7 @@ export function mount(el, w) {
         `<tr>${week
           .map((d, i) => {
             if (!d) return '<td></td>';
-            const isDay = d === wd.getDate();
+            const isDay = d === k.date;
             const rosy = i === 0 || holidays.includes(d);
             const cls = [isDay ? 'wday' : '', rosy ? 'sun' : ''].join(' ').trim();
             return `<td class="${cls}"><span>${d}</span></td>`;
@@ -29,7 +29,7 @@ export function mount(el, w) {
     .join('');
 
   el.innerHTML = `
-    <p class="cal-date">${wd.getFullYear()}.${pad(wd.getMonth() + 1)}.${pad(wd.getDate())}</p>
+    <p class="cal-date">${k.year}.${pad(k.month + 1)}.${pad(k.date)}</p>
     <p class="cal-time">${timeLine}</p>
     <div class="cal-wrap">
       <table class="cal" aria-label="예식 달력">
