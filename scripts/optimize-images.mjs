@@ -38,8 +38,8 @@ await sharp(path.join(SRC, ogSrc))
   .rotate()
   .resize(800, 400, { fit: 'cover', position: 'attention' })
   .jpeg({ quality: 82 })
-  .toFile(path.join(OUT, 'og.jpg'));
-console.log(`${ogSrc} → og.jpg (공유 썸네일)`);
+  .toFile(path.join(OUT, 'og-v2.jpg'));
+console.log(`${ogSrc} → og-v2.jpg (공유 썸네일)`);
 
 console.log('\nwedding.js 의 gallery 에 붙여넣을 목록:');
 console.log(JSON.stringify(names, null, 2));

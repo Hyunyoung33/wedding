@@ -107,7 +107,7 @@ export const WEDDING = {
   share: {
     title: '두현민 ♥ 박현영, 결혼합니다',
     description: '',                    // 비우면 날짜·장소로 자동 생성
-    thumbnail: 'images/og.jpg',
+    thumbnail: 'images/og-v2.jpg',
   },
 
   keys: {
