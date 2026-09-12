@@ -1,6 +1,6 @@
 // Firebase 콘솔 → Firestore Database → 규칙 탭에 그대로 붙여넣으세요.
 // 방명록: 누구나 읽기/작성 가능, 수정·삭제 불가 (삭제는 콘솔에서만)
-// RSVP: 작성만 가능, 읽기 불가 (하객 개인정보 보호 — 집계는 콘솔에서)
+// RSVP: 작성 가능 + 읽기 가능(비밀 확인 페이지용). 수정·삭제는 콘솔에서만.
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -16,7 +16,7 @@ service cloud.firestore {
       allow update, delete: if false;
     }
     match /rsvp/{doc} {
-      allow read: if false;
+      allow read: if true;
       allow create: if request.resource.data.keys().hasOnly(['side', 'name', 'attending', 'count', 'meal', 'createdAt'])
         && request.resource.data.side in ['groom', 'bride']
         && request.resource.data.name is string

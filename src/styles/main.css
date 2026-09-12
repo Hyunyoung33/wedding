@@ -340,3 +340,14 @@ a { color: inherit; text-decoration: none; }
   60% { opacity: calc(var(--op) * 0.7); }
   100% { transform: translate(4vw, -18dvh); opacity: 0; }
 }
+
+/* 참석 확인 페이지 */
+.adm { max-width: 500px; padding: 40px 20px; }
+.adm-loading { text-align: center; padding: 60px 20px; color: var(--muted); }
+.adm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; }
+.adm-stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 8px; text-align: center; }
+.adm-stat span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.adm-stat strong { font-size: 20px; font-family: var(--serif-strong); font-weight: 400; color: var(--accent); }
+.adm-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.adm-table th { color: var(--muted); font-weight: 400; padding: 10px 6px; border-bottom: 1px solid var(--line); }
+.adm-table td { padding: 12px 6px; border-bottom: 1px solid var(--line); text-align: center; }

@@ -18,6 +18,11 @@ const SECTIONS = [
 ];
 
 const app = document.getElementById('app');
+
+// 비밀 확인 페이지: ?admin=<키> 로 접속하면 청첩장 대신 RSVP 명단/집계 표시
+if (new URLSearchParams(location.search).get('admin') === WEDDING.adminKey) {
+  import('./lib/admin.js').then((m) => m.mountAdmin(app, WEDDING));
+} else {
 for (const [id, load] of SECTIONS) {
   const el = document.createElement('section');
   el.id = id;
@@ -61,4 +66,5 @@ if (WEDDING.bgm) {
     () => audio.play().catch(() => {}).finally(setUi),
     { once: true },
   );
+}
 }

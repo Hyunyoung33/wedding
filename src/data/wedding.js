@@ -100,6 +100,7 @@ export const WEDDING = {
   coverStyle: 'wave',   // 커버 스타일: 'wave'(웨이브 텍스트+빛망울) / 'arch'(아치형) / 'full'(풀스크린)
   firstMet: '',         // 처음 만난 날 (예: '2020-05-10') — 넣으면 '함께한 시간' 실시간 카운터 표시  ⚠️ 날짜 필요
   rsvpPopup: true,      // 접속 시 참석여부 안내 팝업 표시 여부
+  adminKey: 'hmhy1031-x7k2', // 참석 확인 페이지 비밀 키. ?admin=이키 로 접속하면 명단/집계가 보임
   guestSnap: {
     url: 'https://photos.app.goo.gl/hH9GnXTYp2yD4T2z7', // 구글 포토 공유 앨범 (축하 사진 공유)
   },
